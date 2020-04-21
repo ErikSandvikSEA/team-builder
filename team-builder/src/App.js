@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { v4 as uuid } from 'uuid' // GROSS
 import Form from './Form'
 import TeamMember from './TeamMember'
-import logo from './logo.svg';
+
 import './App.css';
 
 
@@ -69,6 +69,9 @@ const App = () => {
 
   }
 
+    const editMember = evt => {
+      setMemberToEdit(memberToEdit)
+    }
 
 
   return (
@@ -83,12 +86,13 @@ const App = () => {
       values={formValues}
       onInputChange={onInputChange}
       onSubmit={onSubmit}
+      memberToEdit={memberToEdit}
     />
        <div className='playerCard'>
    {
       teamMembers.map(teamMember => {
         return (
-          <TeamMember key={teamMember.id} details={teamMember}/>
+          <TeamMember key={teamMember.id} details={teamMember} memberToEdit={memberToEdit} editMember={editMember}/>
         )
       })
     }

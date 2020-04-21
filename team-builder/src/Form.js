@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 
 function Form(props) {
      // THESE ARE THE **EXACT PROPS** FriendForm EXPECTS!
@@ -6,7 +6,12 @@ function Form(props) {
           values,
           onInputChange,
           onSubmit,
+          memberToEdit,
+          setMemberToEdit,
      } = props
+
+   
+
 
      return (
           <div>
