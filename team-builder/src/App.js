@@ -92,7 +92,7 @@ const App = () => {
    {
       teamMembers.map(teamMember => {
         return (
-          <TeamMember key={teamMember.id} details={teamMember} memberToEdit={memberToEdit} editMember={editMember}/>
+          <TeamMember key={teamMember.id} details={teamMember} memberToEdit={memberToEdit} editMember={editMember} setMemberToEdit={setMemberToEdit}/>
         )
       })
     }
