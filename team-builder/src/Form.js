@@ -5,8 +5,7 @@ function Form(props) {
      const {
           values,
           onInputChange,
-          editMember,
-          memberToEdit,
+          onSubmit,
      } = props
 
      return (
@@ -57,23 +56,22 @@ function Form(props) {
                          /></label>
 
                     {/* ////////// DROPDOWN ////////// */}
-                    <label>All Star&nbsp;
+                    <label>Captain&nbsp;
        <select
                               // very similar to inputs of type text
-                              value={values.allStar}
+                              value={values.captain}
                               onChange={onInputChange}
-                              name='allStar'
+                              name='captain'
                          >
-                              <option value='no'>Not Voted as an All Star</option>
-                              <option value='yes'>Voted as an All Star</option>
+                              <option value='no'>Not Voted as a Captain</option>
+                              <option value='yes'>Voted as a Captain</option>
                          </select></label>
 
-               </form>
-               <button 
-                    memberToEdit={memberToEdit}
-                    onClick={editMember}>
-                         Edit Member
+               <button onClick={onSubmit}>
+                         Add Member
                </button>
+               </form>
+             
           </div>
      )
 }

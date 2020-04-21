@@ -14,7 +14,7 @@ const initialTeamMembersList = [
     position: 'CB',
     height: `6' 0"`,
     number: '5',
-    allStar: true,
+    captain: true,
   },
 ]
 
@@ -24,7 +24,7 @@ const initialFormValues = {
   position: '',
   height: ``,
   number: '',
-  allStar: 'no',
+  captain: 'no',
 }
 
 
@@ -50,19 +50,31 @@ const App = () => {
     })
   }
 
+  const onSubmit = evt => {
+    evt.preventDefault()
+
+    const newTeamMember = {
+      id: uuid(),
+      fName: formValues.fName,
+      lName: formValues.lName,
+      position: formValues.position,
+      height: formValues.height,
+      captain: formValues.captain === 'no' ? false : true
+    }
+
+    setTeamMembers(
+      [ ...teamMembers, newTeamMember ]
+    )
+    setFormValues(initialFormValues)
+
+  }
+
+
 
   return (
     <div className='container'>
     <header><h1>Team Members App</h1></header>
-    <div className='playerCard'>
-   {
-      teamMembers.map(teamMember => {
-        return (
-          <TeamMember key={teamMember.lName} details={teamMember}/>
-        )
-      })
-    }
-    </div>
+ 
 
     <Form
       // 🔥 STEP 2 - THE FORM WANTS ITS FOOD!!!!
@@ -70,8 +82,17 @@ const App = () => {
       // to see what props it expects
       values={formValues}
       onInputChange={onInputChange}
-
+      onSubmit={onSubmit}
     />
+       <div className='playerCard'>
+   {
+      teamMembers.map(teamMember => {
+        return (
+          <TeamMember key={teamMember.id} details={teamMember}/>
+        )
+      })
+    }
+    </div>
   </div>
   )
 }

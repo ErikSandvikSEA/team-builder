@@ -10,7 +10,7 @@ function TeamMember({ details }) {
       <p>Position: {details.position}</p>
       <p>Position: {details.height}</p>
 
-      <p>All Star: {details.allStar ? 'Yes' : 'No'}</p>
+      <p>Captain: {details.captain ? 'Yes' : 'No'}</p>
 
       
     </div>
