@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { v4 as uuid } from 'uuid' // GROSS
 import Form from './Form'
+import TeamMember from './TeamMember'
 import logo from './logo.svg';
 import './App.css';
 
@@ -8,12 +9,12 @@ import './App.css';
 const initialTeamMembersList = [
   {
     id: uuid(),
-    fName: 'First Name',
-    lName: 'Last Name',
-    position: 'Position',
-    height: 'Height',
-    number: 'Number',
-    allStar: false,
+    fName: 'Carles',
+    lName: 'Puyol',
+    position: 'CB',
+    height: `6' 0"`,
+    number: '5',
+    allStar: true,
   },
 ]
 
@@ -21,7 +22,7 @@ const initialFormValues = {
   fName: '',
   lName: '',
   position: '',
-  height: '',
+  height: ``,
   number: '',
   allStar: 'no',
 }
@@ -30,6 +31,7 @@ const initialFormValues = {
 const App = () => {
   const [teamMembers, setTeamMembers] = useState(initialTeamMembersList)
   const [formValues, setFormValues] = useState(initialFormValues)
+  const [memberToEdit, setMemberToEdit] = useState({})
 
   const onInputChange = evt => {
     // 🔥 STEP 4 - IMPLEMENT A CHANGE HANDLER (works for inputs and dropdowns)
@@ -52,13 +54,15 @@ const App = () => {
   return (
     <div className='container'>
     <header><h1>Team Members App</h1></header>
-    {/* {
+    <div className='playerCard'>
+   {
       teamMembers.map(teamMember => {
         return (
-          <TeamMember key={teamMember.id} details={teamMember} />
+          <TeamMember key={teamMember.lName} details={teamMember}/>
         )
       })
-    } */}
+    }
+    </div>
 
     <Form
       // 🔥 STEP 2 - THE FORM WANTS ITS FOOD!!!!
@@ -66,6 +70,7 @@ const App = () => {
       // to see what props it expects
       values={formValues}
       onInputChange={onInputChange}
+
     />
   </div>
   )
